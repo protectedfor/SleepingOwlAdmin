@@ -21,6 +21,7 @@ Admin.Modules.register('display.actions', () => {
             Admin.Events.fire("datatables::actions::submitting", settings);
 
             $.ajax(settings).done(function (msg) {
+                Admin.Events.fire("datatables::actions::submitted_ajax", self);
                 if (msg.hasOwnProperty('text')) {
                     swal({title: msg.text, text: msg.message, type: msg.type, timer: 5000})
                 }
